@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Downloader</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            padding: 5px;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: white;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        input::placeholder {
+            color: #ddd;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #ff4b2b;
+            color: white;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff5733;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px;
+            border-radius: 10px;
+            animation: fadeIn 3s ease-in-out;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* 📱 Mobile Optimization */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .container {
+                width: 95%;
+                max-width: 350px;
+                padding: 20px;
+            }
+
+            input {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .footer {
+                font-size: 12px;
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>YouTube Video Downloader</h2>
+        
+        <div class="input-container">
+            <input type="text" id="videoURL" placeholder="Enter YouTube video URL" />
+        </div>
+
+        <button onclick="downloadVideo()">Download</button>
+    </div>
+
+    <div class="footer">❤️ Made with love by <span style="color: #ffcc00;">Ajit Uddin</span></div>
+
+    <script>
+        function downloadVideo() {
+            let url = document.getElementById("videoURL").value;
+
+            if (!url) {
+                alert("Please enter a YouTube URL.");
+                return;
+            }
+
+            window.location.href = `http://localhost:5000/download?url=${encodeURIComponent(url)}`;
+        }
+    </script>
+
+</body>
+</html>
